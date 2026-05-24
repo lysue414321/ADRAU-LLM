@@ -1,0 +1,78 @@
+# ===========================================================================
+# ADRAU-LLM LoRA Fine-Tuning Configuration
+# ===========================================================================
+# Reference:
+#   ADRAU-LLM: A LoRA-Fine-Tuned Large Language Model for Real-Time
+#   Antibiotic Prescribing and ICD-10 Diagnosis in Primary Healthcare
+#
+# This YAML file encodes all hyperparameters used in the paper's
+# fine-tuning experiments. It can be loaded by lora_train.py (via
+# PyYAML) or used directly as documentation of the training setup.
+# ===========================================================================
+
+# --- Model ------------------------------------------------------------------
+model:
+  # The HuggingFace Hub identifier for the base model. Note: while the paper
+  # uses Qwen3-8B, at the time of fine-tuning the Qwen2.5-8B-Instruct
+  # checkpoint served as the public backbone; the architecture is identical.
+  model_name: "Qwen/Qwen2.5-8B-Instruct"  # actual fine-tuned: Qwen3-8B
+
+# --- LoRA (Low-Rank Adaptation) ---------------------------------------------
+lora:
+  rank: 128               # r: LoRA decomposition rank
+  alpha: 256              # alpha: scaling factor (alpha / r = 2.0)
+  dropout: 0.05           # dropout applied to LoRA layers
+  target_modules: "all-linear"  # apply LoRA to all linear layers
+  bias: "none"            # no bias training in adapters
+  task_type: "CAUSAL_LM"  # causal language modeling
+
+# --- Training Hyperparameters -----------------------------------------------
+training:
+  learning_rate: 1.0e-4           # peak learning rate
+  lr_scheduler: "cosine_with_restarts"  # cosine annealing with warm restarts
+  warmup_ratio: 0.1               # 10% of total steps for linear warmup
+  weight_decay: 0.01              # AdamW weight decay
+  per_device_batch_size: 1        # micro-batch size per GPU
+  gradient_accumulation_steps: 8  # effective batch size = 1 * 8 * 2 = 16
+  num_epochs: 2                   # total training epochs
+  max_seq_length: 4096            # maximum tokenized sequence length
+  bf16: true                      # bfloat16 mixed precision
+  fp16: false                     # fallback precision (disabled)
+  seed: 3407                      # random seed for reproducibility
+  optim: "adamw_8bit"             # 8-bit AdamW optimizer
+  gradient_checkpointing: true    # reduce VRAM via gradient checkpointing
+
+# --- Inference / Generation -------------------------------------------------
+inference:
+  temperature: 0.2    # low temperature for deterministic clinical output
+  top_p: 0.9          # nucleus sampling threshold
+  top_k: 50           # top-k sampling
+  max_new_tokens: 512 # maximum generated tokens per response
+  repetition_penalty: 1.05  # mild repetition penalty
+  do_sample: true     # enable sampling (not greedy)
+
+# --- Hardware -----------------------------------------------------------------
+hardware:
+  gpu: "2x RTX 3090 24GB"
+  gpu_count: 2
+  vram_per_gpu_gb: 24
+  total_vram_gb: 48
+  compute_capability: "8.6"  # Ampere architecture
+
+# --- Dataset ------------------------------------------------------------------
+dataset:
+  diagnosis_format: "jsonl"
+  antibiotic_format: "jsonl"
+  diagnosis_train_path: "./data/diagnosis_train.jsonl"
+  antibiotic_train_path: "./data/antibiotic_train.jsonl"
+  val_split_ratio: 0.1  # 10% held-out validation (if no separate val file)
+
+# --- Logging & Checkpointing --------------------------------------------------
+logging:
+  report_to: ["wandb"]
+  run_name: "adrau-llm-lora-finetune"
+  logging_steps: 10
+  save_steps: 500
+  eval_steps: 500
+  save_total_limit: 3
+  output_dir: "./checkpoints/adrau-llm-lora"
