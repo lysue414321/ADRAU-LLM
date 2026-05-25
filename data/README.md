@@ -1,4 +1,4 @@
-# ADRAU-LLM Antibiotic QA Pairs
+# ADRAU-LLM Antibiotic QA Pairsantibiotic_knowledge_qa
 
 ## Overview
 
@@ -31,20 +31,6 @@ The QA pairs were generated through a multi-stage process:
 
 2. **LLM-based Generation**: The knowledge graph triples and guideline passages were fed to **Qwen-Plus** with dimension-specific prompts to generate question-answer pairs in clinical guideline style.
 
-3. **Expert Review**: All generated QA pairs underwent manual review by clinical pharmacists and infectious disease specialists to verify medical accuracy and alignment with the source guidelines.
-
-## Sample File
-
-The file `antibiotic_qa_pairs_sample.json` contains 20 representative QA pairs from across all four categories. Each entry follows this schema:
-
-```json
-{
-  "question": "...",
-  "answer": "...",
-  "category": "disease_treatment | pathogen_matching | special_populations | contraindications",
-  "guideline_source": "..."
-}
-```
 
 ## Accessing the Full Dataset
 
