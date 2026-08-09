@@ -19,6 +19,16 @@ and rational antibiotic recommendation.
 | `pharmacist_evaluation_analysis.py` | Analyzes blinded clinical pharmacist ratings of antibiotic-use and antibiotic-choice appropriateness. |
 | `pharmacist_s_class_exploration.py` | Explores pharmacist assessment results within the BMJ "sometimes appropriate" category. |
 | `error_reduction_table.py` | Generates summary tables for diagnostic and antibiotic-prescribing error reduction. |
+| `supplementary_analysis/` | Reproducible bootstrap, paired McNemar, age-stratified, and expert-review analyses added during manuscript revision. |
+
+## Supplementary Statistical Analyses
+
+Revision-stage analyses are provided in `supplementary_analysis/`. These
+scripts calculate record-level percentile-bootstrap confidence intervals,
+paired McNemar comparisons, adult and paediatric strata, category-level
+F1-score summaries, and strict or flexible expert-review summaries. See
+[`supplementary_analysis/README.md`](supplementary_analysis/README.md) for input
+schemas and command examples.
 
 ## Fine-Tuning With LLaMA-Factory
 
