@@ -2,56 +2,79 @@
 
 ## Overview
 
-This directory contains question-answer (QA) pairs for fine-tuning large language models on antibiotic clinical knowledge. The QA pairs are in Chinese and cover multiple clinical dimensions relevant to antibiotic prescribing, pathogen matching, special populations, and contraindications.
+This directory contains the antibiotic knowledge question-answer (QA) dataset
+used for ADRAU-LLM fine-tuning. The QA pairs cover antibiotic-use decisions,
+pathogen matching, drug selection, special populations, contraindications and
+other antimicrobial stewardship knowledge.
 
 ## Dataset Description
 
-The manuscript reports **3,570 guideline- and knowledge-graph-derived QA pairs**
-used during model development. The JSON file currently in this repository is a
-development export and should not be treated as the definitive manuscript
-release until its provenance and count are reconciled with the final training
-manifest.
+`antibiotic_knowledge_qa.json` contains **3,501 unique QA pairs** corresponding
+to the available training-data release:
 
-The following aggregate results are safe for public sharing and are provided in
-`../aggregate_results/`. They contain no patient-level records:
+- **1,898 knowledge-graph-derived QA pairs**;
+- **1,603 guideline-derived QA pairs** retained after quality review.
 
-- diagnosis and antibiotic-use summary results;
-- BMJ-stratified results;
-- age-stratified aggregate results;
-- blinded pharmacist-review summary results.
+The guideline source initially contained 1,626 generated pairs. Twenty-three
+pairs that were not supported by the source text were excluded during quality
+review. The released JSON contains no duplicate question-answer pairs.
 
-The full dataset contains **3,570 QA pairs** in the final manuscript description,
-spanning the following categories:
+Each JSON record uses the following fields:
 
-| Category | Description | Approximate Count |
-|---|---|---|
-| `disease_treatment` | Disease-specific antibiotic treatment recommendations, dosing, and duration | ~1,100 |
-| `pathogen_matching` | Pathogen identification, drug-pathogen matching, and resistance-aware treatment selection | ~980 |
-| `special_populations` | Dosing and drug selection for pediatrics, geriatrics, pregnancy, renal/hepatic impairment | ~850 |
-| `contraindications` | Drug contraindications, adverse reactions, allergy cross-reactivity, and drug-drug interactions | ~640 |
+| Field | Description |
+|---|---|
+| `instruction` | General instruction supplied to the model. |
+| `input` | Clinical or antimicrobial stewardship question. |
+| `output` | Reference answer used for supervised fine-tuning. |
+
+Aggregate, non-identifiable evaluation results are available in
+`../aggregate_results/`.
 
 ## Data Sources
 
-The QA pairs are derived from two authoritative Chinese clinical guidelines:
+The released dataset combines two sources:
 
-1. **Chinese Guiding Principles for Clinical Application of Antibiotics (2015 Edition)** -- The primary national guideline issued by the National Health Commission of China, covering antibacterial drug classification, therapeutic principles, and pathogen-directed therapy across all major infectious disease categories.
+1. **Knowledge-graph-derived pairs** generated from an infection and
+   antibiotic stewardship knowledge graph using forward and reverse question
+   templates.
 
-2. **Guidelines for Antibiotic Use in Adult Acute Respiratory Infections** -- A focused guideline covering antibiotic prescribing for upper and lower respiratory tract infections in adult patients.
+2. **Guideline-derived pairs** generated from the following clinical guidance
+   documents and retained after manual quality review:
+
+   - **Chinese Guiding Principles for Clinical Application of Antibiotics
+     (2015 Edition)**, covering antibacterial drug classification, therapeutic
+     principles and pathogen-directed treatment.
+
+   - **Appropriate Antibiotic Use for Acute Respiratory Tract Infection in
+     Adults**, covering antibiotic prescribing for common adult acute
+     respiratory tract infections.
 
 ## Generation Pipeline
 
-The QA pairs were generated through a multi-stage process:
+The QA pairs were prepared through a multi-stage process:
 
-1. **Knowledge Graph Construction**: Guideline text was parsed into a structured knowledge graph consisting of entity-relation-entity triples (e.g., `<Community-acquired Pneumonia> -- <first_line_treatment> -- <Amoxicillin>`).
+1. **Knowledge graph processing:** Relevant entity-relation-entity triples
+   were selected and translated into natural-language questions and answers
+   using forward and reverse templates.
 
-2. **LLM-based Generation**: The knowledge graph triples and guideline passages were fed to **Qwen-Plus** with dimension-specific prompts to generate question-answer pairs in clinical guideline style.
+2. **Guideline-based generation:** Guideline passages were processed with
+   dimension-specific prompts using **Qwen-Plus** to generate candidate QA
+   pairs.
 
+3. **Quality review:** Reviewers assessed the guideline-derived pairs for
+   source consistency, logical clarity, clinical applicability and
+   completeness. Only pairs passing all four criteria were retained.
 
-## Accessing the Full Dataset
+## Data Availability
 
-The complete 3,570 QA pairs are available upon request. Please contact the repository maintainers for access.
+The complete released dataset of 3,501 QA pairs is provided in
+`antibiotic_knowledge_qa.json`. It contains no electronic health records,
+patient identifiers or record-level model predictions.
 
-## License
+## License and Use
 
-The QA pairs are derived from publicly available clinical guidelines and are intended for research purposes. Users should verify clinical content against current guidelines before clinical application.
+The QA pairs are intended for research use. Users should verify all clinical
+content against current guidelines before clinical application. The repository
+licence applies to this release; source guidelines remain subject to their own
+terms and conditions.
 

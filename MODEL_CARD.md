@@ -53,7 +53,7 @@ ADRAU-LLM is a clinical decision support system designed for two complementary t
 | Component | Description | Size |
 |---|---|---|
 | EHR diagnosis data | Real-world outpatient encounters from Peking University Shenzhen Hospital (January 2023–June 2024), de-identified, with structured chief complaints, histories, physical exams, lab results, and attending physician diagnoses | 133,450 encounters (train); 40,559 encounters (temporal hold-out test) |
-| Antibiotic QA pairs | Expert-curated question-answer pairs derived from Chinese clinical guidelines (Guiding Principles for Clinical Application of Antibiotics, 2015) and an infection stewardship knowledge graph, covering antibiotic selection, dosing, contraindications, and special populations for respiratory infections | 3,570 pairs |
+| Antibiotic QA pairs | Quality-reviewed question-answer pairs derived from clinical guidelines and an infection and antibiotic stewardship knowledge graph, covering antibiotic selection, pathogen matching, contraindications, special populations, and related clinical knowledge | 3,501 pairs (1,898 knowledge-graph-derived and 1,603 guideline-derived) |
 
 **Note:** EHR data cannot be publicly shared due to institutional ethics committee restrictions. Knowledge base data, prompt templates, and source code are available in the repository.
 
@@ -67,13 +67,13 @@ Evaluation performed on a temporal hold-out set of 40,559 outpatient encounters 
 | Top-1 Precision | 0.211 | 0.718 |
 | Top-1 Recall | 0.185 | 0.698 |
 | Top-1 F1 (weighted) | 0.198 | 0.703 |
-| Top-3 F1 (weighted) | 0.317 | 0.763 |
+| Top-3 F1 (weighted) | 0.316 | 0.763 |
 | ΔF1 (LoRA \u2013 Base) | \u2013 | +0.504 |
 | Antibiotic Use Rate | 14.0% | 16.3% |
 | Antibiotic Error Rate | 15.2% | 13.4% |
 | Error Reduction vs Physician | \u2013 | 66.2% |
 | Expert-rated Appropriateness (Strict) | \u2013 | 78.1% |
-| Expert-rated Appropriateness (Flexible) | \u2013 | 93.1% |
+| Expert-rated Appropriateness (Flexible) | \u2013 | 93.6% |
 
 ## Limitations
 
