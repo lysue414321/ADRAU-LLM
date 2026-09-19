@@ -1,4 +1,4 @@
-# ADRAU-LLM Antibiotic QA Pairsantibiotic_knowledge_qa
+# ADRAU-LLM Antibiotic Knowledge Data
 
 ## Overview
 
@@ -6,7 +6,22 @@ This directory contains question-answer (QA) pairs for fine-tuning large languag
 
 ## Dataset Description
 
-The full dataset contains **3,570 QA pairs** spanning the following categories:
+The manuscript reports **3,570 guideline- and knowledge-graph-derived QA pairs**
+used during model development. The JSON file currently in this repository is a
+development export and should not be treated as the definitive manuscript
+release until its provenance and count are reconciled with the final training
+manifest.
+
+The following aggregate results are safe for public sharing and are provided in
+`../public_data/`. They contain no patient-level records:
+
+- diagnosis and antibiotic-use summary results;
+- BMJ-stratified results;
+- age-stratified aggregate results;
+- blinded pharmacist-review summary results.
+
+The full dataset contains **3,570 QA pairs** in the final manuscript description,
+spanning the following categories:
 
 | Category | Description | Approximate Count |
 |---|---|---|

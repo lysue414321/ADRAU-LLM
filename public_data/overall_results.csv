@@ -1,0 +1,11 @@
+analysis,metric,comparator,n,adrau_value,comparator_value,adrau_95ci,comparator_95ci,difference_or_reduction,interpretation
+Diagnosis,Weighted Top-1 F1,Qwen3-8B base model,40559,0.703,0.198,0.698-0.707,,+0.504 (0.498-0.510),Physician-recorded diagnosis was the reference standard
+Diagnosis,Weighted Top-3 F1,Qwen3-8B base model,40559,0.763,0.316,0.759-0.768,,+0.447 (0.441-0.453),Physician-recorded diagnosis was included among the first three candidates
+Antibiotic use,Overall recommendation/use rate versus base,Qwen3-8B base model,40559,16.3%,14.0%,,+2.2 percentage points,Rate comparison only; not an appropriateness estimate
+Antibiotic use,Overall recommendation/use rate versus physicians,Physician-recorded prescribing,40526,16.3%,38.6%,,-22.3 percentage points,Records with evaluable physician antibiotic-use information
+Antibiotic errors,Combined BMJ Never/Always versus base,Qwen3-8B base model,31804,4252,4825,,11.9% relative error reduction,Potential inappropriate-decision reduction
+Antibiotic errors,Combined BMJ Never/Always versus physicians,Physician-recorded prescribing,31777,4250,12581,,66.2% relative error reduction (95% CI 65.2%-67.2%),Potential inappropriate-decision reduction
+Pharmacist review,Antibiotic-use decision strict,Not applicable,375,293/375,,,78.1%,Blinded expert review of ADRAU-LLM outputs
+Pharmacist review,Antibiotic-use decision flexible,Not applicable,375,351/375,,,93.6%,Blinded expert review of ADRAU-LLM outputs
+Pharmacist review,Antibiotic choice strict,Not applicable,34,16/34,,,47.1%,Only recommendations with an evaluable drug-choice assessment
+Pharmacist review,Antibiotic choice flexible,Not applicable,34,32/34,,,94.1%,Only recommendations with an evaluable drug-choice assessment

@@ -1,0 +1,5 @@
+bmj_category,validation_records,physician_evaluable_records,adrau_antibiotic_use_pct,base_antibiotic_use_pct,physician_antibiotic_use_pct,appropriateness_interpretation
+Never,30941,30914,12.7%,13.5%,39.7%,Antibiotic use represents potential overuse
+Sometimes,8751,8745,24.4%,14.6%,32.1%,Diagnosis code alone cannot determine appropriateness
+Always,863,863,62.0%,26.1%,64.3%,Non-use represents potential underuse
+Unclassified U07,4,0,NA,NA,NA,Excluded from BMJ-stratified analyses

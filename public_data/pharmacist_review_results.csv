@@ -1,0 +1,7 @@
+dimension,criterion,evaluable_n,appropriate_n,appropriate_pct,scope
+Antibiotic-use decision,Strict,375,293,78.1%,ADRAU-LLM recommendations
+Antibiotic-use decision,Flexible,375,351,93.6%,ADRAU-LLM recommendations
+Antibiotic-use decision,Inappropriate,375,24,6.4%,ADRAU-LLM recommendations
+Antibiotic choice,Strict,34,16,47.1%,Recommendations with evaluable drug-choice assessment
+Antibiotic choice,Flexible,34,32,94.1%,Recommendations with evaluable drug-choice assessment
+Antibiotic choice,Inappropriate,34,2,5.9%,Recommendations with evaluable drug-choice assessment

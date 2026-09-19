@@ -68,12 +68,18 @@ narratives. Do not upload files containing outpatient numbers, visit dates,
 chief complaints, present illness, physical examination text, laboratory
 narratives, or model prediction traces that reconstruct patient cases.
 
-Publicly shareable materials should be limited to:
+The public release is limited to the following materials:
 
 - generated antibiotic rational-use QA pairs;
 - aggregate evaluation results;
 - figures derived from aggregate results;
 - preprocessing, fine-tuning, and evaluation code.
+
+No individual participant data, EHR narratives, outpatient or visit identifiers,
+row-level predictions, case-level error traces, or raw pharmacist-rating rows are
+included. The aggregate release is also mirrored in the Open Science Framework
+repository listed in the manuscript Data Availability statement once its
+persistent record is available.
 
 ## Suggested Citation
 

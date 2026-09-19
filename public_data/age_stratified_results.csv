@@ -1,0 +1,17 @@
+analysis,age_group,n,comparator,adrau_result,comparator_result,comparison,interpretation
+Diagnosis weighted Top-1 F1,Adult (>=18 years),29070,Qwen3-8B: 0.159,0.712,0.159,+0.553
+Diagnosis weighted Top-1 F1,Paediatric (<18 years),11476,Qwen3-8B: 0.300,0.671,0.300,+0.371
+Diagnosis weighted Top-3 F1,Adult (>=18 years),29070,Qwen3-8B: 0.271,0.759,0.271,+0.488
+Diagnosis weighted Top-3 F1,Paediatric (<18 years),11476,Qwen3-8B: 0.436,0.770,0.436,+0.335
+BMJ Never/Always inappropriate decisions,Adult (>=18 years),21587,Physicians: 8950 (41.5%),2760 (12.8%),69.2% relative reduction,Descriptive age-stratified comparison
+BMJ Never/Always inappropriate decisions,Paediatric (<18 years),10184,Physicians: 3629 (35.6%),1489 (14.6%),59.0% relative reduction,Descriptive age-stratified comparison
+BMJ Never/Always appropriate decisions,Adult (>=18 years),21587,Physicians: 12637 (58.5%),18827 (87.2%),+28.7 percentage points,Descriptive age-stratified comparison
+BMJ Never/Always appropriate decisions,Paediatric (<18 years),10184,Physicians: 6555 (64.2%),8695 (85.4%),+21.0 percentage points,Descriptive age-stratified comparison
+Pharmacist antibiotic-use decision strict,Adult (>=18 years),264,Not applicable,210/264 (79.5%),NA,Descriptive blinded review
+Pharmacist antibiotic-use decision strict,Paediatric (<18 years),111,Not applicable,83/111 (74.8%),NA,Descriptive blinded review
+Pharmacist antibiotic-use decision flexible,Adult (>=18 years),264,Not applicable,248/264 (93.9%),NA,Descriptive blinded review
+Pharmacist antibiotic-use decision flexible,Paediatric (<18 years),111,Not applicable,103/111 (92.8%),NA,Descriptive blinded review
+Pharmacist antibiotic-choice strict,Adult (>=18 years),19,Not applicable,9/19 (47.4%),NA,Small descriptive subgroup; not a formal age comparison
+Pharmacist antibiotic-choice strict,Paediatric (<18 years),15,Not applicable,10/15 (66.7%),NA,Small descriptive subgroup; not a formal age comparison
+Pharmacist antibiotic-choice flexible,Adult (>=18 years),19,Not applicable,19/19 (100.0%),NA,Small descriptive subgroup; not a formal age comparison
+Pharmacist antibiotic-choice flexible,Paediatric (<18 years),15,Not applicable,13/15 (86.7%),NA,Small descriptive subgroup; not a formal age comparison

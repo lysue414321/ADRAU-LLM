@@ -130,10 +130,10 @@ ROWS = [
 
     ('',
      'Underuse error count\n("Always" appropriate)',
-     'n = 328',
-     '—',
      'n = 638',
-     '↑94.5% vs. base model†',
+     'n = 308',
+     'n = 328',
+     '−48.6% vs. base model; no reduction vs. physicians†',
      False, True),
 ]
 
@@ -219,8 +219,8 @@ ws.row_dimensions[fn].height = 36
 ws.merge_cells(f'A{fn}:F{fn}')
 c = ws.cell(row=fn, column=1,
     value=(
-        '† Underuse (cases where antibiotic is "Always" appropriate) increased in ADRAU-LLM vs. base model, '
-        'reflecting more aggressive treatment in this subset; this is considered a separate safety concern from overuse. '
+        '† Underuse (cases where antibiotic is "Always" appropriate) was lower with ADRAU-LLM than with the base model '
+        '(638 vs. 328; 48.6% relative reduction), but was higher than in physician-recorded prescribing (308 vs. 328). '
         'pp, percentage points; n, number of cases/errors; —, comparator not applicable for this metric.'
     ))
 c.font      = F_FOOT
