@@ -1,33 +1,25 @@
-# ADRAU-LLM Core Code
+# ADRAU-LLM Code and Aggregate Results
 
 This folder contains the core scripts and LLaMA-Factory configuration used for
 ADRAU-LLM, a LoRA fine-tuned Qwen3-8B model for respiratory infection diagnosis
 and rational antibiotic recommendation.
 
-## Files
+## Repository contents
 
 | File | Purpose |
 |---|---|
+| `analysis_code/` | All preprocessing, fine-tuning support, diagnostic evaluation, antibiotic-use evaluation, pharmacist-review, bootstrap, paired-comparison and age-stratified analysis scripts. |
 | `qwen3_8b_lora_sft.yaml` | LLaMA-Factory supervised fine-tuning configuration for Qwen3-8B with LoRA. |
-| `lab_result_enrichment.py` | Enriches structured laboratory test text with full test names and reference ranges. |
-| `dataset_resampling.py` | Performs diagnosis dataset balancing with tiered down-sampling and up-sampling. |
-| `knowledge_graph_triple_extraction.py` | Extracts respiratory infection and antibiotic stewardship triples from the knowledge graph. |
-| `knowledge_graph_qa_generation.py` | Converts knowledge graph triples into question-answer pairs for antibiotic rational-use training. |
-| `diagnosis_top1_top3_evaluation.py` | Evaluates Top-1 and Top-3 diagnostic performance from model prediction files. |
-| `diagnosis_confusion_matrix.py` | Generates full and category-level confusion matrices for diagnosis evaluation. |
-| `bmj_antibiotic_evaluation.py` | Evaluates antibiotic recommendation rates using BMJ appropriateness categories. |
-| `pharmacist_evaluation_analysis.py` | Analyzes blinded clinical pharmacist ratings of antibiotic-use and antibiotic-choice appropriateness. |
-| `pharmacist_s_class_exploration.py` | Explores pharmacist assessment results within the BMJ "sometimes appropriate" category. |
-| `error_reduction_table.py` | Generates summary tables for diagnostic and antibiotic-prescribing error reduction. |
-| `supplementary_analysis/` | Reproducible bootstrap, paired McNemar, age-stratified, and expert-review analyses added during manuscript revision. |
+| `data/` | Publicly shareable generated antimicrobial-stewardship QA data and data documentation. |
+| `aggregate_results/` | Aggregate, non-identifiable results used to summarize the study findings. |
 
-## Supplementary Statistical Analyses
+## Analysis code
 
-Revision-stage analyses are provided in `supplementary_analysis/`. These
-scripts calculate record-level percentile-bootstrap confidence intervals,
+All analysis scripts are provided in `analysis_code/`. They calculate
+record-level percentile-bootstrap confidence intervals,
 paired McNemar comparisons, adult and paediatric strata, category-level
 F1-score summaries, and strict or flexible expert-review summaries. See
-[`supplementary_analysis/README.md`](supplementary_analysis/README.md) for input
+[`analysis_code/README.md`](analysis_code/README.md) for input
 schemas and command examples.
 
 ## Fine-Tuning With LLaMA-Factory

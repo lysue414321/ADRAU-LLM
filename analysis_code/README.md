@@ -1,4 +1,4 @@
-# Supplementary statistical analyses
+# ADRAU-LLM analysis code
 
 These scripts reproduce analyses added during manuscript revision. They operate
 on local case-level CSV or Excel files. No patient-level data are included in
@@ -7,7 +7,7 @@ this repository.
 Install the analysis dependencies with:
 
 ```bash
-python -m pip install -r supplementary_analysis/requirements.txt
+python -m pip install -r analysis_code/requirements.txt
 ```
 
 ## 1. Paired antibiotic-use analysis
@@ -20,7 +20,7 @@ Never and Always groups. Optional age input produces adult and paediatric
 strata.
 
 ```bash
-python supplementary_analysis/paired_antibiotic_analysis.py \
+python analysis_code/paired_antibiotic_analysis.py \
   --input local_case_level_results.csv \
   --category-column bmj_category \
   --adrau-column adrau_antibiotic \
@@ -49,7 +49,7 @@ age strata, per-category F1-scores, and the mean and standard deviation of
 category-level F1-score differences.
 
 ```bash
-python supplementary_analysis/diagnostic_bootstrap_analysis.py \
+python analysis_code/diagnostic_bootstrap_analysis.py \
   --input local_diagnosis_results.csv \
   --true-column diagnosis \
   --adrau-columns adrau_1 adrau_2 adrau_3 \
@@ -68,7 +68,7 @@ where evaluable, antibiotic choice. Results can be grouped by BMJ category,
 age, and source.
 
 ```bash
-python supplementary_analysis/expert_review_summary.py \
+python analysis_code/expert_review_summary.py \
   --input local_expert_ratings.xlsx \
   --decision-score-column decision_score \
   --choice-score-column choice_score \
