@@ -13,7 +13,7 @@ release until its provenance and count are reconciled with the final training
 manifest.
 
 The following aggregate results are safe for public sharing and are provided in
-`../public_data/`. They contain no patient-level records:
+`../aggregate_results/`. They contain no patient-level records:
 
 - diagnosis and antibiotic-use summary results;
 - BMJ-stratified results;
@@ -54,3 +54,4 @@ The complete 3,570 QA pairs are available upon request. Please contact the repos
 ## License
 
 The QA pairs are derived from publicly available clinical guidelines and are intended for research purposes. Users should verify clinical content against current guidelines before clinical application.
+
